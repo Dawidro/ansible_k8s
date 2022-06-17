@@ -4,21 +4,42 @@
 
   roles:
     - update_debian
-
+    - ufw-role
     - containerd
   vars:
     containerd_config_cgroup_driver_systemd: true
 
-- hosts: workers
-  become: true
-  roles:
-    -  ufv
+#- hosts: workers
+#  become: true
+#  roles:
+#    -  ufv
 
 - hosts: master
   become: true
   roles:
-    -  ufv
-
+    - ufw
+  vars:
+    ufw_rules:
+      - rule: allow
+        to_port: 6443
+        protocol: tcp
+        comment: 'allow incoming connection on 6443'
+      - rule: allow
+        to_port: 2379
+        protocol: tcp
+        comment: 'allow incoming connection on 2379'
+      - rule: allow
+        to_port: 2380
+        protocol: tcp
+        comment: 'allow incoming connection on 2380'
+      - rule: allow
+        to_port: 10250
+        protocol: tcp
+        comment: 'allow incoming connection on 10250'
+      - rule: allow
+        to_port: 10252
+        protocol: tcp
+        comment: 'allow incoming connection on 10252'
 
 
 
