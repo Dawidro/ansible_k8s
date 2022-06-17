@@ -1,0 +1,28 @@
+---
+- hosts: all
+  become: true
+
+  roles:
+    - update_debian
+
+    - containerd
+  vars:
+    containerd_config_cgroup_driver_systemd: true
+
+- hosts: workers
+  become: true
+  roles:
+    -  ufv
+
+- hosts: master
+  become: true
+  roles:
+    -  ufv
+
+
+
+
+
+
+
+
