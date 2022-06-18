@@ -40,7 +40,7 @@
     - name: copies admin.conf to user's kube config
       copy:
         src: /etc/kubernetes/admin.conf
-        dest: /home/kube/.kube/config
+        dest: /home/vmadmin/.kube/config
         remote_src: yes
         owner: vmadmin
 
