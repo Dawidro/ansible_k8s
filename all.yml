@@ -1,5 +1,5 @@
 ---
-- hosts: "masters, workers"
+- hosts: "master, workers"
   remote_user: vmadmin
   become: yes
   become_method: sudo
