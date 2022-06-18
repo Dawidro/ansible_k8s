@@ -46,7 +46,7 @@
 #        line: KUBELET_EXTRA_ARGS=--node-ip=192.168.122.101
 
     - name: Initialize the Kubernetes cluster using kubeadm
-      shell: kubeadm init --apiserver-advertise-address="192.168.122.101" --apiserver-cert-extra-sans="192.168.122.101"  --node-name k8s-master --pod-network-cidr=10.100.0.0/16
+      shell: kubeadm init --apiserver-advertise-address="192.168.122.101" --apiserver-cert-extra-sans="192.168.122.101"  --node-name master --pod-network-cidr=10.100.0.0/16
 
 
     - name: Restart kubelet
