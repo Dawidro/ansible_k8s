@@ -1,0 +1,15 @@
+---
+- hosts: "master, workers"
+  remote_user: vmadmin
+  become: yes
+  become_method: sudo
+  become: yes
+  gather_facts: yes
+  connection: ssh
+
+  roles:
+    - update_debian
+    - ufw-role
+    - ansible-role-containerd
+  vars:
+    containerd_config_cgroup_driver_systemd: true

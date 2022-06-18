@@ -1,49 +1,45 @@
 ---
-- hosts: all
-  become: true
+- hosts: "masters, workers"
+  remote_user: vmadmin
+  become: yes
+  become_method: sudo
+  become: yes
+  gather_facts: yes
+  connection: ssh
 
+  tasks:
+    - name: Add the overlay and br_netfilter modules
+      modprobe:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - "overlay"
+        - "br_netfilter"
+
+
+     - name: Set system configurations for Kubernetes networking
+       file:
+         path: "/etc/sysctl.d/99-kubernetes-cri.conf"
+         state: "touch"
+
+     - name: Add conf for containerd
+       blockinfile:
+         path: "/etc/sysctl.d/99-kubernetes-cri.conf"
+         block: |
+                net.bridge.bridge-nf-call-iptables = 1
+                net.ipv4.ip_forward = 1
+                net.bridge.bridge-nf-call-ip6tables = 1
+
+     - name: Apply new settings
+       command: sudo sysctl --system
+
+     - name: disable swap
+       shell: |
+               sudo swapoff -a
+               sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
   roles:
     - update_debian
     - ufw-role
     - containerd
   vars:
     containerd_config_cgroup_driver_systemd: true
-
-#- hosts: workers
-#  become: true
-#  roles:
-#    -  ufv
-
-- hosts: master
-  become: true
-  roles:
-    - ufw
-  vars:
-    ufw_rules:
-      - rule: allow
-        to_port: 6443
-        protocol: tcp
-        comment: 'allow incoming connection on 6443'
-      - rule: allow
-        to_port: 2379
-        protocol: tcp
-        comment: 'allow incoming connection on 2379'
-      - rule: allow
-        to_port: 2380
-        protocol: tcp
-        comment: 'allow incoming connection on 2380'
-      - rule: allow
-        to_port: 10250
-        protocol: tcp
-        comment: 'allow incoming connection on 10250'
-      - rule: allow
-        to_port: 10252
-        protocol: tcp
-        comment: 'allow incoming connection on 10252'
-
-
-
-
-
-
-
