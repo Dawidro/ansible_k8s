@@ -45,8 +45,10 @@
 #        path: /etc/default/kubelet
 #        line: KUBELET_EXTRA_ARGS=--node-ip=192.168.122.101
 
-    - name: Initialize the Kubernetes cluster using kubeadm
-      shell: kubeadm init --apiserver-advertise-address="192.168.122.101" --apiserver-cert-extra-sans="192.168.122.101"  --node-name master --pod-network-cidr=10.100.0.0/16
+name: install Pod network
+      become: yes
+      become_user: ubuntu    - name: Initialize the Kubernetes cluster using kubeadm
+      command: kubeadm init --apiserver-advertise-address="192.168.122.101" --apiserver-cert-extra-sans="192.168.122.101"  --node-name master --pod-network-cidr=10.100.0.0/16
 
 
     - name: Restart kubelet
@@ -71,11 +73,14 @@
         remote_src: yes
         owner: vmadmin
 
+  - hosts: master
+    become: true
+    become_user: vmadmin
     - name: install Pod network
       become: yes
-      shell: kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+      command: kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
       args:
-        chdir: $HOME
+        chdir: /home/vmadmin
 
     - name: Get the token for joining the worker nodes
       become: yes
@@ -85,8 +90,3 @@
     - name: Copy join command to local file.
       become: yes
       local_action: copy content="{{ kubernetes_join_command.stdout_lines[0] }}" dest="/tmp/kubernetes_join_command" mode=0777
-
-
-
-
-
