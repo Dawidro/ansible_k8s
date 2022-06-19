@@ -26,19 +26,6 @@
         protocol: tcp
         comment: 'allow incoming connection on 10252'
 
-- hosts: master
-  become: true
-  tasks:
-    - name: Install Kubernetes binaries
-      apt:
-        name: "{{ packages }}"
-        state: present
-        update_cache: yes
-      vars:
-        packages:
-          - kubelet
-          - kubeadm
-          - kubectl
 
 #    - name: Configure node ip
 #      lineinfile:

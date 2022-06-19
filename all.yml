@@ -56,6 +56,18 @@
         fstype: swap
         state: absent
 
+    - name: Install Kubernetes binaries
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+      vars:
+        packages:
+          - kubelet
+          - kubeadm
+          - kubectl
+
+
 - hosts: "master, workers"
   become: yes
   become_method: sudo
