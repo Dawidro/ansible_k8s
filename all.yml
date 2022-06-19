@@ -82,14 +82,14 @@
   become_method: sudo
   become: yes
   gather_facts: yes
-    tasks:
+  tasks:
     - name: Install Kubernetes binaries
       apt:
         name: "{{ packages }}"
         state: present
         update_cache: yes
       vars:
-	packages:
+        packages:
           - kubelet
           - kubeadm
           - kubectl
