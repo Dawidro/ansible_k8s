@@ -56,7 +56,18 @@
         fstype: swap
         state: absent
 
-- hosts: "master, workers"
+- hosts: "master"
+  become: yes
+  become_method: sudo
+
+  roles:
+    - update_debian
+    - ufw-role
+    - ansible-role-containerd
+  vars:
+    containerd_config_cgroup_driver_systemd: true
+
+- hosts: "workers"
   become: yes
   become_method: sudo
 
