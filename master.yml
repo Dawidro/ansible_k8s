@@ -45,9 +45,7 @@
 #        path: /etc/default/kubelet
 #        line: KUBELET_EXTRA_ARGS=--node-ip=192.168.122.101
 
-name: install Pod network
-      become: yes
-      become_user: ubuntu    - name: Initialize the Kubernetes cluster using kubeadm
+    - name: Initialize the Kubernetes cluster using kubeadm
       command: kubeadm init --apiserver-advertise-address="192.168.122.101" --apiserver-cert-extra-sans="192.168.122.101"  --node-name master --pod-network-cidr=10.100.0.0/16
 
 
@@ -73,11 +71,9 @@ name: install Pod network
         remote_src: yes
         owner: vmadmin
 
-  - hosts: master
-    become: true
-    become_user: vmadmin
     - name: install Pod network
       become: yes
+      become_user: vmadmin
       command: kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
       args:
         chdir: /home/vmadmin
