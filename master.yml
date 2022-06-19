@@ -6,6 +6,10 @@
   vars:
     ufw_rules:
       - rule: allow
+        to_port: 22
+        protocol: tcp
+        comment: 'allow incoming connection on 22'
+      - rule: allow
         to_port: 179
         protocol: tcp
         comment: 'allow incoming connection on 179'
@@ -13,6 +17,14 @@
         to_port: 443
         protocol: tcp
         comment: 'allow incoming connection on 443'
+      - rule: allow
+        to_port: 2379
+        protocol: tcp
+        comment: 'allow incoming connection on 2379'
+      - rule: allow
+        to_port: 2380
+        protocol: tcp
+        comment: 'allow incoming connection on 2380'
       - rule: allow
         to_port: 4149
         protocol: tcp
@@ -30,14 +42,6 @@
         protocol: tcp
         comment: 'allow incoming connection on 6443'
       - rule: allow
-        to_port: 2379
-        protocol: tcp
-        comment: 'allow incoming connection on 2379'
-      - rule: allow
-        to_port: 2380
-        protocol: tcp
-        comment: 'allow incoming connection on 2380'
-      - rule: allow
         to_port: 9099
         protocol: tcp
         comment: 'allow incoming connection on 9099'
@@ -46,9 +50,17 @@
         protocol: tcp
         comment: 'allow incoming connection on 10250'
       - rule: allow
+        to_port: 10251
+        protocol: tcp
+        comment: 'allow incoming connection on 10251'
+      - rule: allow
         to_port: 10252
         protocol: tcp
         comment: 'allow incoming connection on 10252'
+      - rule: allow
+        to_port: 10255
+        protocol: tcp
+        comment: 'allow incoming connection on 10255'
       - rule: allow
         to_port: 10256
         protocol: tcp
