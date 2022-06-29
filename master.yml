@@ -65,6 +65,91 @@
         to_port: 10256
         protocol: tcp
         comment: 'allow incoming connection on 10256'
+      - rule: allow
+        to_port: 36000
+        protocol: tcp
+        comment: 'allow incoming connection on 36000'
+      - rule: allow
+        to_port: 36001
+        protocol: tcp
+        comment: 'allow incoming connection on 36001'
+      - rule: allow
+        to_port: 36002
+        protocol: tcp
+        comment: 'allow incoming connection on 36002'
+      - rule: allow
+        to_port: 36003
+        protocol: tcp
+        comment: 'allow incoming connection on 36003'
+      - rule: allow
+        to_port: 36004
+        protocol: tcp
+        comment: 'allow incoming connection on 36004'
+      - rule: allow
+        to_port: 36005
+        protocol: tcp
+        comment: 'allow incoming connection on 36005'
+      - rule: allow
+        to_port: 36006
+        protocol: tcp
+        comment: 'allow incoming connection on 36006'
+      - rule: allow
+        to_port: 36007
+        protocol: tcp
+        comment: 'allow incoming connection on 36007'
+      - rule: allow
+        to_port: 36008
+        protocol: tcp
+        comment: 'allow incoming connection on 36008'
+      - rule: allow
+        to_port: 36009
+        protocol: tcp
+        comment: 'allow incoming connection on 36009'
+      - rule: allow
+        to_port: 36010
+        protocol: tcp
+        comment: 'allow incoming connection on 36010'
+      - rule: allow
+        to_port: 36011
+        protocol: tcp
+        comment: 'allow incoming connection on 36011'
+      - rule: allow
+        to_port: 36012
+        protocol: tcp
+        comment: 'allow incoming connection on 36012'
+      - rule: allow
+        to_port: 36013
+        protocol: tcp
+        comment: 'allow incoming connection on 36013'
+      - rule: allow
+        to_port: 36014
+        protocol: tcp
+        comment: 'allow incoming connection on 36014'
+      - rule: allow
+        to_port: 36015
+        protocol: tcp
+        comment: 'allow incoming connection on 36015'
+      - rule: allow
+        to_port: 36016
+        protocol: tcp
+        comment: 'allow incoming connection on 36016'
+      - rule: allow
+        to_port: 36017
+        protocol: tcp
+        comment: 'allow incoming connection on 36017'
+      - rule: allow
+        to_port: 360018
+        protocol: tcp
+        comment: 'allow incoming connection on 36018'
+      - rule: allow
+        to_port: 36019
+        protocol: tcp
+        comment: 'allow incoming connection on 36019'
+      - rule: allow
+        to_port: 36020
+        protocol: tcp
+        comment: 'allow incoming connection on 36020'
+
 
 - hosts: "master"
   become_method: sudo
