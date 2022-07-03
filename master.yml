@@ -42,6 +42,10 @@
         protocol: tcp
         comment: 'allow incoming connection on 6443'
       - rule: allow
+        to_port: 7946
+        protocol: tcp
+        comment: 'allow incoming connection on 9099'
+      - rule: allow
         to_port: 9099
         protocol: tcp
         comment: 'allow incoming connection on 9099'
