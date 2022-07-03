@@ -171,7 +171,7 @@
       file:
         path: /home/vmadmin/.kube
         state: directory
-        mode: 0755
+        mode: 0600
 
 
     - name: copies admin.conf to user's kube config
