@@ -138,7 +138,7 @@
         protocol: tcp
         comment: 'allow incoming connection on 36017'
       - rule: allow
-        to_port: 360018
+        to_port: 36018
         protocol: tcp
         comment: 'allow incoming connection on 36018'
       - rule: allow
