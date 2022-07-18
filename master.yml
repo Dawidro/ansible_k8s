@@ -48,7 +48,7 @@
       - rule: allow
         to_port: 7946
         protocol: tcp
-        comment: 'allow incoming connection on 9099'
+        comment: 'allow incoming connection on 7946'
       - rule: allow
         to_port: 8080
         protocol: tcp
@@ -77,7 +77,7 @@
         to_port: 10256
         protocol: tcp
         comment: 'allow incoming connection on 10256'
-        - rule: allow    
+      - rule: allow    
         to_port: 36001:36020
         protocol: tcp
         comment: 'allow incoming connection on ports 36001-36020'
