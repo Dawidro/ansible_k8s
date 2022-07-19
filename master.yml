@@ -85,7 +85,8 @@
         to_port: 36001:36020
         protocol: tcp
         comment: 'allow incoming connection on ports 36001-36020'
-
+  roles:
+    - role: gantsign.helm
 
 - hosts: "master"
   become_method: sudo
