@@ -54,6 +54,10 @@
         protocol: tcp
         comment: 'allow incoming connection on 8080'
       - rule: allow
+        to_port: 8443
+        protocol: tcp
+        comment: 'allow incoming connection on 8443'
+      - rule: allow
         to_port: 9099
         protocol: tcp
         comment: 'allow incoming connection on 9099'
