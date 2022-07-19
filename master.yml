@@ -2,7 +2,7 @@
 - hosts: master
   become: true
   roles:
-    - role: gantsign.helm    
+    - ansible_role_helm    
     - ufw-role
   vars:
     ufw_rules:
